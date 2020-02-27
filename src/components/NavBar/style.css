@@ -1,0 +1,14 @@
+#navbarr {
+  background-color: black;
+}
+
+.photo {
+  height: 48px;
+  width: 48px;
+  margin-right: 15px;
+}
+.header-photo {
+  width: 100%;
+  height: 35%;
+  z-index: -1;
+}

@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "name": "Geralt of Rivia",
+    "image": "./imgs/geralt.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Ciri",
+    "image": "./imgs/ciri.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Yennefer of Vengeburg",
+    "image": "./imgs/yen.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Triss Merigold",
+    "image": "./imgs/triss.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Dandelion",
+    "image": "./imgs/dandelion.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Moussack",
+    "image": "./imgs/moussack.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Zoltan Chivay",
+    "image": "./imgs/zoltan.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Lambert",
+    "image": "./imgs/lambert.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Vessemir",
+    "image": "./imgs/vessemir.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Gaunter O'Dimm",
+    "image": "./imgs/gaunter.jpg"
+  }
+]

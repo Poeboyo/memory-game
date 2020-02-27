@@ -1,26 +1,98 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import NavBar from "./components/NavBar";
+import Container from "./components/Container";
+import Title from "./components/Title";
+import Row from "./components/Row";
+import Witcher from "./components/Witcher";
+import Col from "./components/Col";
+import witchercard from "./witchercard.json";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    witchercard,
+    message: "Click a Character to Start",
+    score: 0,
+    topScore: 0
+  };
+
+  style = { backgroundImage: `url(require("./imgs/witcherSchools.png"))` };
+
+  shuffleImages = () => {
+    console.log(this.state.witchercard);
+    this.setState({
+      witchercard: this.state.witchercard.sort(() => Math.random() - 0.5)
+    });
+  };
+
+  componentDidMount() {
+    this.shuffleImages();
+  }
+
+  imageClick = (id, name, clicked) => {
+    const witcherImages = this.state.witchercard;
+
+    witcherImages.forEach(witcher => {
+      if (witcher.id === id && witcher.clicked) {
+        witcherImages.forEach(element => {
+          element.clicked = false;
+        });
+        this.setState({
+          message:
+            "Sorry - You Already Clicked That Character. Better Luck Next Time...",
+          score: 0
+        });
+      } else if (witcher.id === id && !witcher.clicked) {
+        witcher.clicked = true;
+        this.setState({
+          message: "Great Choice!",
+          score: this.state.score + 1,
+          topScore:
+            this.state.score + 1 > this.state.topScore
+              ? this.state.score + 1
+              : this.state.topScore
+        });
+      }
+    });
+
+    if (this.state.score + 1 === witcherImages.length) {
+      this.setState({
+        message: "You won! Play again!",
+        score: 0,
+        topScore: 0
+      });
+    }
+
+    this.shuffleImages();
+  };
+
+  render() {
+    return (
+      <div>
+        <NavBar />
+        <Container>
+          <Title
+            message={this.state.message}
+            score={this.state.score}
+            topscore={this.state.topScore}
+          ></Title>
+          <Row>
+            {this.state.witchercard.map(witcher => (
+              <Col size="sm">
+                <Witcher
+                  id={witcher.id}
+                  key={witcher.id}
+                  name={witcher.name}
+                  image={witcher.image}
+                  shuffle={this.shuffleImages}
+                  imageClick={this.imageClick}
+                />
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </div>
+    );
+  }
 }
 
 export default App;
