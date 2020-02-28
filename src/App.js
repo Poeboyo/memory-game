@@ -6,6 +6,7 @@ import Row from "./components/Row";
 import Witcher from "./components/Witcher";
 import Col from "./components/Col";
 import witchercard from "./witchercard.json";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends Component {
   state = {
@@ -76,13 +77,13 @@ class App extends Component {
             topscore={this.state.topScore}
           ></Title>
           <Row>
-            {this.state.witchercard.map(witcher => (
+            {this.state.witchercard.map(character => (
               <Col size="sm">
                 <Witcher
-                  id={witcher.id}
-                  key={witcher.id}
-                  name={witcher.name}
-                  image={witcher.image}
+                  id={character.id}
+                  key={character.id}
+                  name={character.name}
+                  image={character.image}
                   shuffle={this.shuffleImages}
                   imageClick={this.imageClick}
                 />

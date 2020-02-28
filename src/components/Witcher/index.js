@@ -5,7 +5,7 @@ function Witcher(props) {
   return (
     <img
       onClick={() => props.imageClick(props.id, props.name, props.clicked)}
-      className="rounded imageBorder"
+      className="rounded imageBorder theWitchers"
       src={props.image}
       alt={props.name}
       key={props.id}
